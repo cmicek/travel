@@ -462,8 +462,10 @@ body {
   @media (min-width: 800px) {
     .site-nav {
       background: none;
+      box-shadow: none;
       height: auto;
       padding: 16px 8px 0 0;
+      overflow: hidden;
       position: absolute;
       right: 0;
       top: 0;
@@ -571,6 +573,38 @@ body {
 .site-header--title {
   position: relative; }
 
+.site-header--background {
+  -webkit-transition: height 0.25s;
+  -moz-transition: height 0.25s;
+  transition: height 0.25s;
+  background-size: cover;
+  background-position: center center;
+  height: 500px; }
+  @media (min-height: 300px) {
+    .site-header--background {
+      height: 150px; } }
+  @media (min-height: 400px) {
+    .site-header--background {
+      height: 250px; } }
+  @media (min-height: 500px) {
+    .site-header--background {
+      height: 350px; } }
+  @media (min-height: 600px) {
+    .site-header--background {
+      height: 450px; } }
+  @media (min-height: 700px) {
+    .site-header--background {
+      height: 550px; } }
+  @media (min-height: 800px) {
+    .site-header--background {
+      height: 650px; } }
+  @media (min-height: 900px) {
+    .site-header--background {
+      height: 750px; } }
+  @media (min-height: 1000px) {
+    .site-header--background {
+      height: 850px; } }
+
 .site-nav--toggle {
   -webkit-transition: opacity 0.25s;
   -moz-transition: opacity 0.25s;
@@ -625,40 +659,93 @@ body {
 /*============================================
  * #Posts
  * ======================================== */
-.post {
+article.post,
+article.page {
   float: none;
   padding: 16px;
   width: 100%; }
   @media (min-width: 400px) {
-    .post {
+    article.post,
+    article.page {
       padding: 24px; } }
   @media (min-width: 800px) {
-    .post {
+    article.post,
+    article.page {
       padding: 40px 0 40px 0; } }
   @media (min-width: 1200px) {
-    .post {
+    article.post,
+    article.page {
       padding: 56px 0 56px 0; } }
-  .post .post--content div, .post .post--content p, .post .post--content h1, .post .post--content h2, .post .post--content h3, .post .post--content h4, .post .post--content h5, .post .post--content h6, .post .post--content ul, .post .post--content ol, .post .post--content dl, .post .post--content table, .post .post--content address, .post .post--content pre, .post .post--content code {
+  article.post .post--content div, article.post .post--content p, article.post .post--content h1, article.post .post--content h2, article.post .post--content h3, article.post .post--content h4, article.post .post--content h5, article.post .post--content h6, article.post .post--content ul, article.post .post--content ol, article.post .post--content dl, article.post .post--content table, article.post .post--content address, article.post .post--content pre, article.post .post--content code, article.post .post--content iframe,
+  article.page .post--content div,
+  article.page .post--content p,
+  article.page .post--content h1,
+  article.page .post--content h2,
+  article.page .post--content h3,
+  article.page .post--content h4,
+  article.page .post--content h5,
+  article.page .post--content h6,
+  article.page .post--content ul,
+  article.page .post--content ol,
+  article.page .post--content dl,
+  article.page .post--content table,
+  article.page .post--content address,
+  article.page .post--content pre,
+  article.page .post--content code,
+  article.page .post--content iframe {
     max-width: 740px;
     margin-left: auto;
     margin-right: auto; }
-    .post .post--content div *, .post .post--content p *, .post .post--content h1 *, .post .post--content h2 *, .post .post--content h3 *, .post .post--content h4 *, .post .post--content h5 *, .post .post--content h6 *, .post .post--content ul *, .post .post--content ol *, .post .post--content dl *, .post .post--content table *, .post .post--content address *, .post .post--content pre *, .post .post--content code * {
+    article.post .post--content div *, article.post .post--content p *, article.post .post--content h1 *, article.post .post--content h2 *, article.post .post--content h3 *, article.post .post--content h4 *, article.post .post--content h5 *, article.post .post--content h6 *, article.post .post--content ul *, article.post .post--content ol *, article.post .post--content dl *, article.post .post--content table *, article.post .post--content address *, article.post .post--content pre *, article.post .post--content code *, article.post .post--content iframe *,
+    article.page .post--content div *,
+    article.page .post--content p *,
+    article.page .post--content h1 *,
+    article.page .post--content h2 *,
+    article.page .post--content h3 *,
+    article.page .post--content h4 *,
+    article.page .post--content h5 *,
+    article.page .post--content h6 *,
+    article.page .post--content ul *,
+    article.page .post--content ol *,
+    article.page .post--content dl *,
+    article.page .post--content table *,
+    article.page .post--content address *,
+    article.page .post--content pre *,
+    article.page .post--content code *,
+    article.page .post--content iframe * {
       max-width: 100%; }
-  .post .post--content blockquote {
+  article.post .post--content blockquote,
+  article.page .post--content blockquote {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto; }
-    .post .post--content blockquote p {
+    article.post .post--content blockquote p,
+    article.page .post--content blockquote p {
       max-width: 100%; }
-  .post .post--content .wp-caption {
+  article.post .post--content .wp-caption,
+  article.page .post--content .wp-caption {
+    background: white;
+    box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.15);
     display: block;
-    padding-left: 40px;
-    padding-right: 40px;
+    overflow: hidden;
+    margin-bottom: 24px;
     margin-left: auto;
     margin-right: auto;
     max-width: 100%;
     text-align: center; }
-  .post p {
+    article.post .post--content .wp-caption img,
+    article.page .post--content .wp-caption img {
+      float: left;
+      width: 100%; }
+  article.post .post--content .wp-caption-text,
+  article.page .post--content .wp-caption-text {
+    display: block;
+    font-family: "IM Fell Great Primer", Georgia, serif;
+    float: left;
+    padding: 16px 0 16px;
+    width: 100%; }
+  article.post p,
+  article.page p {
     display: block; }
 
 .post.sticky {
@@ -998,12 +1085,20 @@ body {
   top: 200px;
   width: 100%; }
 
-.cf, .row, .site-content, .post, .post .post--content {
+.cf, .row, .site-content, article.post,
+article.page, article.post .post--content,
+article.page .post--content {
   zoom: 1; }
-  .cf:before, .row:before, .site-content:before, .post:before, .post .post--content:before, .cf:after, .row:after, .site-content:after, .post:after, .post .post--content:after {
+  .cf:before, .row:before, .site-content:before, article.post:before,
+  article.page:before, article.post .post--content:before,
+  article.page .post--content:before, .cf:after, .row:after, .site-content:after, article.post:after,
+  article.page:after, article.post .post--content:after,
+  article.page .post--content:after {
     content: "";
     display: table; }
-  .cf:after, .row:after, .site-content:after, .post:after, .post .post--content:after {
+  .cf:after, .row:after, .site-content:after, article.post:after,
+  article.page:after, article.post .post--content:after,
+  article.page .post--content:after {
     clear: both; }
 
 .accessibility {

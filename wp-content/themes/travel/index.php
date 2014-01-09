@@ -1,10 +1,16 @@
-<?php get_header(); ?>
+<?php get_header();
+  $header_img = get_header_image();
+  if(get_the_post_thumbnail() && is_single()){
+    $header_img = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'full') );
+
+  }
+?>
   <header class="site-header">
     <div class="site-header--title container">
       <a href="<?php  bloginfo('url'); ?>" class="site-nav--title"><?php  bloginfo('name'); ?></a>
       <span class="site-nav--toggle js-site-nav--toggle"><i class="hamburger"></i>  Menu</span>
     </div>
-    <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+    <figure class="site-header--background" style="background-image: url(<?= $header_img; ?>)" ></figure>
   </header>
   <section class="site-content">
      <?php if (have_posts()){
@@ -26,6 +32,7 @@
                   } ?> 
                 <?php } ?>
                 <li class="post--meta--item"><?= the_date(); ?></li>
+                <li class="post--meta--item"><?= the_author(); ?></li>
               </ul>
               
             </header>

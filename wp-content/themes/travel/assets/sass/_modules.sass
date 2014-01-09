@@ -77,8 +77,10 @@ body
   
   @include breakpoint($breakpoint--medium)
     background: none
+    box-shadow: none
     height: auto
     padding: 16px 8px 0 0
+    overflow: hidden
     position: absolute
     right: 0
     top: 0
@@ -198,7 +200,30 @@ body
 
 .site-header--title
   position: relative
+
+.site-header--background
+  @include transition(height .25s)
+  background-size: cover
+  background-position: center center
+  height: 500px
   
+  @media (min-height: 300px)
+    height: 150px
+  @media (min-height: 400px)
+    height: 250px
+  @media (min-height: 500px)
+    height: 350px
+  @media (min-height: 600px)
+    height: 450px
+  @media (min-height: 700px)
+    height: 550px
+  @media (min-height: 800px)
+    height: 650px
+  @media (min-height: 900px)
+    height: 750px
+  @media (min-height: 1000px)
+    height: 850px
+
 
 .site-nav--toggle
   @include transition(opacity .25s)
@@ -251,7 +276,8 @@ body
   #Posts
   * ========================================*/
 
-.post
+article.post,
+article.page
   @extend .cf
   // border-bottom: solid 1px $grey15
   // box-shadow: 0 1px 0 #fff
@@ -274,7 +300,7 @@ body
   .post--content
     @extend .cf
 
-    div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,table,address,pre,code
+    div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,table,address,pre,code,iframe
       max-width: 740px
       margin-left: auto
       margin-right: auto
@@ -292,15 +318,31 @@ body
 
     
     .wp-caption
+      background: #fff
+      box-shadow: 0 1px 5px -1px rgba(0,0,0,.15)
       display: block
-      padding-left: $base*5
-      padding-right: $base*5
+      // padding-left: $base*5
+      // padding-right: $base*5
+      overflow: hidden
+      margin-bottom: $base--line-height
       margin-left: auto
       margin-right: auto
       max-width: 100%
       text-align: center
+
+      img
+        float: left
+        width: 100%
+
+    .wp-caption-text
+      display: block
+      font-family: $serif
+      float: left
+      padding: $base*2 0 $base*2
+      width: 100%
   p
     display: block
+
 
 
 .post.sticky
