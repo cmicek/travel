@@ -1,0 +1,980 @@
+@charset "UTF-8";
+/*Reset ===================================== */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, figure, figcaption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body, select, input, textarea {
+  color: #444444; }
+
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, main {
+  display: block; }
+
+* {
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/*============================================
+ * Framework
+ * Project:  A&D Site 2013
+ *
+ *--Table of Contents--
+ *  #Readme
+ *--Typography--
+ *  #main
+ *  #paragraphs
+ *  #headings
+ *  #images
+ *  #lists
+ *  #links
+ *  #tables
+ *  #other
+ *--Forms--
+ *  #fields
+ *--Grids--
+ *
+ * ========================================== */
+/*============================================
+ * #Readme
+ *
+ * This file is the base framework containing a number of objects and abstractions
+ * that form the basis for much of the app/site. CSS for new or un-anticipated site
+ * elements should go in modules.sass or components.sass
+ * ========================================== */
+/*============================================
+ * #Typography
+ * ========================================== */
+html, body {
+  background: #f4f4f4;
+  color: #33383d;
+  font: normal normal 16px/24px "PT Sans", "Helvetica Neue", "Helvetica" "Arial", "sans-serif"; }
+
+p {
+  margin-bottom: 24px; }
+  p:last-child {
+    margin-bottom: 0; }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  color: #251854;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75); }
+  h1:first-child, .h1:first-child, h2:first-child, .h2:first-child, h3:first-child, .h3:first-child, h4:first-child, .h4:first-child, h5:first-child, .h5:first-child, h6:first-child, .h6:first-child {
+    margin-top: 0; }
+
+h1, .h1 {
+  font: normal normal 48px/42px "IM Fell Great Primer SC", Georgia, serif;
+  margin-top: 48px;
+  margin-bottom: 36px; }
+
+h2, .h2 {
+  font: normal normal 32px/36px "IM Fell Great Primer SC", Georgia, serif;
+  margin-top: 36px;
+  margin-bottom: 30px; }
+
+h3, .h3 {
+  font: normal normal 24px/30px "IM Fell Great Primer SC", Georgia, serif;
+  margin-top: 36px;
+  margin-bottom: 26.4px; }
+
+h4, .h4 {
+  font: normal normal 20px/26.4px "IM Fell Great Primer SC", Georgia, serif;
+  margin-top: 26.4px;
+  margin-bottom: 24px; }
+
+h5, .h5 {
+  font: normal normal 17.6px/24px "IM Fell Great Primer SC", Georgia, serif;
+  margin-top: 24px;
+  margin-bottom: 12px; }
+
+h6, .h6 {
+  font: normal normal 16px/24px "IM Fell Great Primer SC", Georgia, serif;
+  margin-top: 12px;
+  margin-bottom: 6px; }
+
+img {
+  height: 100%;
+  max-width: 100%; }
+  img.alignleft {
+    float: left;
+    margin: 16px; }
+  img.alignright {
+    float: right;
+    margin: 16px; }
+
+.wp-caption {
+  max-width: 100%; }
+
+ul, ul li {
+  list-style: disc; }
+
+ul ul, ul ul li {
+  list-style: circle; }
+
+ol, ol li {
+  list-style: decimal; }
+
+ol ol, ol ol li {
+  list-style: lower-alpha; }
+
+ul ul, ul ol, ol ul, ol ol {
+  margin-top: 4px;
+  margin-bottom: 4px; }
+
+ul, ol, dl {
+  margin-bottom: 8px; }
+  ul dt, ol dt, dl dt {
+    font-weight: bold; }
+  ul li, ul dd, ol li, ol dd, dl li, dl dd {
+    margin-bottom: 4px;
+    padding-left: 8px;
+    margin-left: 24px; }
+  ul dd, ol dd, dl dd {
+    margin-bottom: 8px; }
+
+a {
+  -webkit-transition: color 0.15s, border 0.15s;
+  -moz-transition: color 0.15s, border 0.15s;
+  transition: color 0.15s, border 0.15s;
+  border-bottom: solid 1px #1c2228;
+  color: #1c2228;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none; }
+  a:hover, a:focus {
+    border-bottom: solid 1px transparent;
+    color: #254493;
+    text-decoration: none; }
+  a:active {
+    color: black;
+    top: 1px; }
+
+table {
+  border-top: solid 1px #d2d3d4;
+  margin-bottom: 24px;
+  width: 100%; }
+  table td, table th {
+    border-bottom: solid 1px #d2d3d4;
+    padding: 8px;
+    text-shadow: 0 1px 0 white; }
+
+thead th, thead td {
+  background: white;
+  color: #494e53;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: normal;
+  padding: 8px 16px; }
+
+tbody tr:nth-child(even) {
+  background: #f4f4f4; }
+
+abbr {
+  border-bottom: dashed 1px;
+  cursor: help; }
+
+small {
+  color: #bbbdbf; }
+
+sup, sub {
+  font-size: 10.66667px;
+  position: relative; }
+
+sup {
+  top: -8px; }
+
+sub {
+  top: 3px; }
+
+q {
+  font-style: italic; }
+
+blockquote {
+  color: #494e53;
+  font-family: "IM Fell Great Primer", Georgia, serif;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 36px;
+  padding: 16px;
+  margin-bottom: 36px;
+  text-align: center; }
+  blockquote cite {
+    display: block;
+    font-family: "IM Fell Great Primer SC", Georgia, serif;
+    font-size: 16px;
+    font-style: normal;
+    text-transform: lowercase; }
+
+pre {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin-bottom: 24px;
+  overflow: auto;
+  padding: 24px;
+  width: 100%; }
+
+address {
+  margin-bottom: 24px; }
+
+/*===========================================
+ * #Forms
+ * ========================================== */
+.control-group {
+  display: block;
+  padding-bottom: 32px; }
+  .control-group label,
+  .control-group .label {
+    display: block;
+    padding: 0 0 12px 0; }
+
+.control-group--checkbox label,
+.control-group--radio label {
+  -webkit-transition: background 0.15s;
+  -moz-transition: background 0.15s;
+  transition: background 0.15s;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 32px; }
+  .control-group--checkbox label:hover, .control-group--checkbox label:focus,
+  .control-group--radio label:hover,
+  .control-group--radio label:focus {
+    background: #f4f4f4;
+    cursor: pointer;
+    color: #251854; }
+  .control-group--checkbox label:active,
+  .control-group--radio label:active {
+    background: #e8e9ea;
+    color: #251854;
+    top: 1px; }
+.control-group--checkbox input[type=checkbox],
+.control-group--checkbox input[type=radio],
+.control-group--radio input[type=checkbox],
+.control-group--radio input[type=radio] {
+  left: 0;
+  position: absolute;
+  top: 2px; }
+
+label {
+  display: block; }
+
+textarea,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  border-radius: 0px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 0 white;
+  background-color: white;
+  border: solid 1px #d2d3d4;
+  color: #1c2228;
+  display: block;
+  margin: 0;
+  padding: 8px;
+  text-align: left;
+  font: normal normal 16px/16px "PT Sans", "Helvetica Neue", "Helvetica" "Arial", "sans-serif";
+  height: auto;
+  position: relative;
+  vertical-align: top;
+  width: 100%; }
+
+textarea {
+  height: 150px; }
+
+select {
+  width: 100%; }
+
+/*============================================
+ * #Grids
+ * ========================================== */
+.col1, .col2, .col3, .col4, .col5, .col6, .col7, .col8, .col9, .col10, .col11, .col12 {
+  background: #f6f6f6;
+  display: block;
+  float: left; }
+
+.row {
+  display: block;
+  width: 100%; }
+
+.col1 {
+  width: 8.33333%; }
+
+.col2 {
+  width: 16.66667%; }
+
+.col3 {
+  width: 25%; }
+
+.col4 {
+  width: 33.33333%; }
+
+.col5 {
+  width: 41.66667%; }
+
+.col6 {
+  width: 50%; }
+
+.col7 {
+  width: 58.33333%; }
+
+.col8 {
+  width: 66.66667%; }
+
+.col9 {
+  width: 75%; }
+
+.col10 {
+  width: 83.33333%; }
+
+.col11 {
+  width: 91.66667%; }
+
+.col12 {
+  width: 100%; }
+
+/*============================================
+ * Components
+ * Project:
+ *
+ *--Table of Contents--
+ *  #Readme
+ *
+ * ========================================== */
+/*============================================
+ * #Readme
+ *
+ * This file is designed to hold reusable interface components on the site, alerts and buttons for example.
+ * this file should only be edited if we invent a new UI element to the site.
+ * Modules are made up of components which are built using the framework.
+ * ========================================== */
+/*============================================
+ * Modules
+ * Project:
+ *
+ *--Table of Contents--
+ *  #Readme
+ *--#Site Elements
+ *--#Posts
+ *
+ * ========================================== */
+/*============================================
+ * #Readme
+ *
+ * This file hold the sections of the site that deal with the business logic. Sidebars, headers, navigation, etc.
+ * Modules are made up of components which are built using the framework.
+ * ========================================== */
+/*============================================
+ *  #Site Elements
+ *  * ======================================== */
+body {
+  overflow-x: hidden; }
+
+.container {
+  padding: 0 16px;
+  padding: 0 24px; }
+
+.site-nav--title {
+  display: inline-block;
+  padding: 16px 0;
+  font-size: 17px;
+  padding: 24px 0; }
+
+/*============================================
+ * #Main Nav
+ * ======================================== */
+.site-nav--title, .site-nav, .site-nav--list a {
+  border-bottom: none;
+  color: white;
+  line-height: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase; }
+  .site-nav--title:hover, .site-nav:hover, .site-nav--list a:hover, .site-nav--title:focus, .site-nav:focus, .site-nav--list a:focus {
+    color: #cccccc;
+    border: none; }
+
+.site-nav {
+  background: rgba(28, 34, 40, 0.9);
+  box-shadow: inset -1px 0 4px rgba(0, 0, 0, 0.5);
+  left: 0;
+  height: 100%;
+  top: 0;
+  overflow: auto;
+  position: fixed;
+  padding-left: 15%;
+  padding-top: 8px;
+  width: 100%;
+  z-index: 1;
+  background: none;
+  height: auto;
+  padding: 16px 8px 0 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3; }
+  .admin-bar .site-nav {
+    padding-top: 44px; }
+
+.site-nav--list {
+  list-style: none;
+  float: right;
+  width: auto; }
+  .site-nav--list li {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .site-nav--list a {
+    color: rgba(255, 255, 255, 0.75);
+    display: block;
+    padding: 8px 16px; }
+    .site-nav--list a:hover, .site-nav--list a:focus {
+      color: white; }
+  .site-nav--list .menu-item {
+    padding-right: 40px;
+    position: relative;
+    float: left;
+    padding-right: 0; }
+  .site-nav--list .menu-item-toggle {
+    -webkit-transition: color 0.25s;
+    -moz-transition: color 0.25s;
+    transition: color 0.25s;
+    content: "+";
+    cursor: pointer;
+    display: block;
+    font-size: 24px;
+    line-height: 32px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 40px;
+    display: none; }
+    .site-nav--list .menu-item-toggle:hover, .site-nav--list .menu-item-toggle:focus {
+      color: white; }
+    .site-nav--list .menu-item-toggle:active {
+      top: 1px; }
+
+.sub-menu {
+  display: none;
+  padding-left: 16px; }
+
+.menu-item__active > .sub-menu {
+  display: block; }
+
+.site-nav--list .menu-item-has-children a {
+  display: inline-block;
+  position: relative;
+  padding-right: 25px; }
+  .site-nav--list .menu-item-has-children a:after {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: border 0.25s;
+    -moz-transition: border 0.25s;
+    transition: border 0.25s;
+    border: solid 2px rgba(255, 255, 255, 0.75);
+    border-top: none;
+    border-left: none;
+    content: "";
+    display: block;
+    height: 6px;
+    margin-top: -4px;
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    width: 6px; }
+.site-nav--list .menu-item-has-children a:hover:after {
+  border-color: white; }
+.site-nav--list .menu-item .sub-menu {
+  display: block;
+  position: absolute; }
+
+/*============================================
+ * #Site Header
+ * ======================================== */
+.site-header {
+  background: #1c2228;
+  float: left;
+  position: relative;
+  width: 100%;
+  z-index: 2; }
+  .site-header img {
+    float: left;
+    height: auto;
+    width: 100%; }
+
+.site-header--title {
+  position: relative; }
+
+.site-nav--toggle {
+  -webkit-transition: opacity 0.25s;
+  -moz-transition: opacity 0.25s;
+  transition: opacity 0.25s;
+  background: url(assets/images/icon-hamburger.png) center center no-repeat;
+  background-size: 24px auto;
+  cursor: pointer;
+  display: block;
+  full: white;
+  height: 100%;
+  opacity: 1;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  text-indent: -9999px;
+  top: 0;
+  width: 40px;
+  display: none; }
+  .site-nav--toggle:hover, .site-nav--toggle:focus {
+    opacity: 0.6; }
+  .site-nav--toggle:active {
+    opacity: 0.4;
+    top: 1px; }
+
+.site-content {
+  background: #f4f4f4;
+  float: left;
+  position: relative;
+  width: 100%;
+  z-index: 2; }
+
+.site-header,
+.site-content {
+  -ms-transition: -ms-transform 0.15s ease-in;
+  -moz-transition: all 0.15s ease-in;
+  -webkit-transition: -webkit-transform 0.15s ease-in;
+  transition: all 0.15s ease-in; }
+
+.site-nav__active {
+  height: 100%;
+  overflow: hidden; }
+  .site-nav__active .site-header,
+  .site-nav__active .site-content {
+    -webkit-transform: translateX(-85%);
+    -moz-transform: translateX(-85%);
+    -ms-transform: translateX(-85%);
+    -o-transform: translateX(-85%);
+    transform: translateX(-85%); }
+
+/*============================================
+ * #Posts
+ * ======================================== */
+.post {
+  float: none;
+  padding: 16px;
+  width: 100%;
+  padding: 24px;
+  padding: 40px 0 40px 0;
+  padding: 56px 0 56px 0; }
+  .post .post--content div, .post .post--content p, .post .post--content h1, .post .post--content h2, .post .post--content h3, .post .post--content h4, .post .post--content h5, .post .post--content h6, .post .post--content ul, .post .post--content ol, .post .post--content dl, .post .post--content table, .post .post--content address, .post .post--content pre, .post .post--content code {
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto; }
+    .post .post--content div *, .post .post--content p *, .post .post--content h1 *, .post .post--content h2 *, .post .post--content h3 *, .post .post--content h4 *, .post .post--content h5 *, .post .post--content h6 *, .post .post--content ul *, .post .post--content ol *, .post .post--content dl *, .post .post--content table *, .post .post--content address *, .post .post--content pre *, .post .post--content code * {
+      max-width: 100%; }
+  .post .post--content blockquote {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto; }
+    .post .post--content blockquote p {
+      max-width: 100%; }
+  .post .post--content .wp-caption {
+    display: block;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    text-align: center; }
+  .post p {
+    display: block; }
+
+.post.sticky {
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  margin: 16px auto 0 auto;
+  max-width: 800px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-top: 56px;
+  margin-bottom: 56px; }
+
+.post--header {
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 750px;
+  margin-bottom: 24px;
+  margin-bottom: 32px; }
+
+.post--title {
+  margin-bottom: 16px;
+  text-align: center; }
+  .post--title a {
+    border-bottom: none; }
+    .post--title a:hover, .post--title a:focus {
+      color: #777b7e;
+      border-bottom: none; }
+
+.post--meta {
+  color: #777b7e;
+  display: block;
+  font-style: italic;
+  font-size: 17px;
+  font-family: "IM Fell Great Primer", Georgia, serif;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+  text-align: center; }
+
+.post--meta--item {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .post--meta--item:before {
+    content: "•";
+    display: inline-block;
+    margin: 0 10px 0 8px;
+    position: relative; }
+  .post--meta--item:first-child:before {
+    display: none; }
+
+.post--meta--link {
+  border-bottom: solid 1px rgba(255, 255, 255, 0);
+  color: #777b7e; }
+  .post--meta--link:hover, .post--meta--link:focus {
+    border-bottom: solid 1px;
+    color: #1c2228; }
+
+.post--tags,
+.post--comments {
+  border-top: dashed 1px #d2d3d4;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #777b7e;
+  font-style: italic;
+  font-family: "IM Fell Great Primer", Georgia, serif;
+  line-height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  max-width: 740px;
+  position: relative;
+  padding: 16px 0 0 32px; }
+  .post--tags:before,
+  .post--comments:before {
+    background: url(assets/images/icon-tag.png) center center no-repeat;
+    background-size: contain;
+    content: "";
+    display: block;
+    float: left;
+    height: 18px;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 17px;
+    width: 18px; }
+  .post--tags a,
+  .post--comments a {
+    border-bottom: solid 1px rgba(255, 255, 255, 0);
+    color: #777b7e;
+    display: inline-block;
+    margin-right: 4px; }
+    .post--tags a:hover, .post--tags a:focus,
+    .post--comments a:hover,
+    .post--comments a:focus {
+      border-bottom: solid 1px;
+      color: #1c2228; }
+    .post--tags a:after,
+    .post--comments a:after {
+      content: ",";
+      margin-left: 1px; }
+    .post--tags a:last-child:after, .post--tags a.post--comments--count:after,
+    .post--comments a:last-child:after,
+    .post--comments a.post--comments--count:after {
+      display: none; }
+
+.post--comments:before {
+  background-image: url(assets/images/icon-comment.png); }
+
+.comment--form {
+  border-top: dashed 1px #d2d3d4;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  margin: 16px auto 0 auto;
+  padding-top: 16px;
+  max-width: 740px; }
+
+/*============================================
+ * Helpers
+ * Project:  
+ *
+ *--Table of Contents--
+ *--#Readme--
+ *--#Helpers--
+ *  #Add/remove floats
+ *  #Text alignment
+ *  #Font weights
+ *  #Add/remove margins
+ *  #Add/remove paddings
+ *  #display
+ *  #clearfix
+ *  #hiding text in an element
+ *
+ * ========================================== */
+/*============================================
+ * #Readme
+ *
+ * A series of helper classes to use arbitrarily. Only use a helper class if an
+ * element/component doesn't already have a class to which you could apply this
+ * styling, e.g. if you need to float `.main-nav` left then add `float:left to
+ * that ruleset as opposed to adding the `.float--left` class to the markup.
+ *
+ * A lot of these classes carry ` !important` as you will always want them to win
+ * out over other selectors.
+ *
+ * ==========================================*/
+ *
+ *
+ * /*============================================
+ * #Helpers
+ * ========================================== */
+.float--right {
+  float: right !important; }
+
+.float--left {
+  float: left !important; }
+
+.float--none {
+  float: none !important; }
+
+.text--left {
+  text-align: left important; }
+
+.text--center {
+  text-align: center !important; }
+
+.text--right {
+  text-align: right !important; }
+
+.weight--light {
+  font-weight: 300 !important; }
+
+.weight--normal {
+  font-weight: 400 !important; }
+
+.weight--semibold {
+  font-weight: 600 !important; }
+
+.push {
+  margin: 8px !important; }
+
+.push--top {
+  margin-top: 8px !important; }
+
+.push--right {
+  margin-right: 8px !important; }
+
+.push--bottom {
+  margin-bottom: 8px !important; }
+
+.push--left {
+  margin-left: 8px !important; }
+
+.push--ends {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important; }
+
+.push--sides {
+  margin-right: 8px !important;
+  margin-left: 8px !important; }
+
+.push-half {
+  margin: 4px !important; }
+
+.push-half--top {
+  margin-top: 4px !important; }
+
+.push-half--right {
+  margin-right: 4px !important; }
+
+.push-half--bottom {
+  margin-bottom: 4px !important; }
+
+.push-half--left {
+  margin-left: 4px !important; }
+
+.push-half--ends {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important; }
+
+.push-half--sides {
+  margin-right: 4px !important;
+  margin-left: 4px !important; }
+
+.flush {
+  margin: 0 !important; }
+
+.flush--top {
+  margin-top: 0 !important; }
+
+.flush--right {
+  margin-right: 0 !important; }
+
+.flush--bottom {
+  margin-bottom: 0 !important; }
+
+.flush--left {
+  margin-left: 0 !important; }
+
+.flush--ends {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important; }
+
+.flush--sides {
+  margin-right: 0 !important;
+  margin-left: 0 !important; }
+
+.soft {
+  padding: 8px !important; }
+
+.soft--top {
+  padding-top: 8px !important; }
+
+.soft--right {
+  padding-right: 8px !important; }
+
+.soft--bottom {
+  padding-bottom: 8px !important; }
+
+.soft--left {
+  padding-left: 8px !important; }
+
+.soft--ends {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important; }
+
+.soft--sides {
+  padding-right: 8px !important;
+  padding-left: 8px !important; }
+
+.soft-half {
+  padding: 4px !important; }
+
+.soft-half--top {
+  padding-top: 4px !important; }
+
+.soft-half--right {
+  padding-right: 4px !important; }
+
+.soft-half--bottom {
+  padding-bottom: 4px !important; }
+
+.soft-half--left {
+  padding-left: 4px !important; }
+
+.soft-half--ends {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important; }
+
+.soft-half--sides {
+  padding-right: 4px !important;
+  padding-left: 4px !important; }
+
+.hard {
+  padding: 0 !important; }
+
+.hard--top {
+  padding-top: 0 !important; }
+
+.hard--right {
+  padding-right: 0 !important; }
+
+.hard--bottom {
+  padding-bottom: 0 !important; }
+
+.hard--left {
+  padding-left: 0 !important; }
+
+.hard--ends {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+
+.hard--sides {
+  padding-right: 0 !important;
+  padding-left: 0 !important; }
+
+.inline {
+  display: inline; }
+
+.relative {
+  position: relative; }
+
+.fixed {
+  position: fixed;
+  top: 200px;
+  width: 100%; }
+
+.cf, .row, .site-content, .post, .post .post--content {
+  zoom: 1; }
+  .cf:before, .row:before, .site-content:before, .post:before, .post .post--content:before, .cf:after, .row:after, .site-content:after, .post:after, .post .post--content:after {
+    content: "";
+    display: table; }
+  .cf:after, .row:after, .site-content:after, .post:after, .post .post--content:after {
+    clear: both; }
+
+.accessibility {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap; }
+  @media print {
+    .accessibility {
+      overflow: visible;
+      text-indent: 0; } }

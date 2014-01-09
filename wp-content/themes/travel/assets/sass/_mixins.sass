@@ -1,0 +1,12 @@
+@mixin breakpoint($point)
+  @if $responsive == true
+    @media (min-width: $point)
+      @content
+  @if $responsive == false
+    @content
+
+@mixin transform-transition
+  -ms-transition: -ms-transform 0.15s ease-in
+  -moz-transition: all 0.15s ease-in
+  -webkit-transition: -webkit-transform 0.15s ease-in
+  transition: all 0.15s ease-in

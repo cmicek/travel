@@ -1,0 +1,330 @@
+/*============================================
+ * Framework
+ * Project:  A&D Site 2013
+ *
+ *--Table of Contents--
+ *  #Readme
+ *--Typography--
+ *  #main
+ *  #paragraphs
+ *  #headings
+ *  #images
+ *  #lists
+ *  #links
+ *  #tables
+ *  #other
+ *--Forms--
+ *  #fields
+ *--Grids--
+ *
+ * ==========================================*/
+
+/*============================================
+ #Readme
+ *
+ * This file is the base framework containing a number of objects and abstractions
+ * that form the basis for much of the app/site. CSS for new or un-anticipated site
+ * elements should go in modules.sass or components.sass
+ * ==========================================*/
+
+/*============================================
+ #Typography
+ * ==========================================*/
+
+// #main
+html,body
+  background: $grey5
+  color: $grey90
+  font: normal normal #{$base--font-size}/#{$base--line-height} $sans-serif
+
+// #paragraphs
+
+p
+  margin-bottom: $base--line-height
+  
+
+  &:last-child
+    margin-bottom: 0
+
+// #headings
+%heading
+  color: $black
+  text-shadow: 0 1px 0 rgba(255,255,255,.75)
+  &:first-child
+    margin-top: 0
+
+h1,.h1
+  @extend %heading
+  font: normal normal #{$base--font-size*3}/#{$base--line-height*1.75} $serifcaps
+  margin-top: $base--line-height*2
+  margin-bottom: $base--line-height*1.5
+h2,.h2
+  @extend %heading
+  font: normal normal #{$base--font-size*2}/#{$base--line-height*1.5} $serifcaps
+  margin-top: $base--line-height*1.5
+  margin-bottom: $base--line-height*1.25
+h3,.h3
+  @extend %heading
+  font: normal normal #{$base--font-size*1.5}/#{$base--line-height*1.25} $serifcaps
+  margin-top: $base--line-height*1.5
+  margin-bottom: $base--line-height*1.1
+h4,.h4
+  @extend %heading
+  font: normal normal #{$base--font-size*1.25}/#{$base--line-height*1.1} $serifcaps
+  margin-top: $base--line-height*1.1
+  margin-bottom: $base--line-height
+h5,.h5
+  @extend %heading
+  font: normal normal #{$base--font-size*1.1}/#{$base--line-height} $serifcaps
+  margin-top: $base--line-height
+  margin-bottom: $base--line-height/2
+h6,.h6
+  @extend %heading
+  font: normal normal #{$base--font-size}/#{$base--line-height} $serifcaps
+  margin-top: $base--line-height/2
+  margin-bottom: $base--line-height/4
+
+
+// #images
+
+img
+  height: 100%
+  max-width: 100%
+  
+  &.alignleft
+    float: left
+    margin: $base*2
+  &.alignright
+    float: right
+    margin: $base*2
+.wp-caption
+  max-width: 100%
+
+
+// #lists
+
+ul, ul li
+  list-style: disc
+ul ul, ul ul li
+  list-style: circle
+
+ol, ol li
+  list-style: decimal
+ol ol, ol ol li
+  list-style: lower-alpha
+
+ul,ol
+  ul,ol
+    margin-top: $base/2    
+    margin-bottom: $base/2    
+
+
+ul,ol,dl
+  margin-bottom: $base
+  dt
+    font-weight: bold
+  li,dd
+    margin-bottom: $base/2    
+    padding-left: $base
+    margin-left: $base*3
+  dd
+    margin-bottom: $base
+
+
+// #links
+
+
+a
+  @include transition(color .15s, border .15s)
+  border-bottom: solid 1px $blue
+  color: $blue
+  cursor: pointer
+  position: relative
+  text-decoration: none
+
+  &:hover,
+  &:focus
+    border-bottom: solid 1px transparent
+    color: rgb(37,68,147)
+    text-decoration: none
+
+  &:active
+    color: #000
+    top: 1px
+
+// #tables
+
+table
+  border-top: solid 1px $grey20
+  margin-bottom: $base--line-height
+  width: 100%
+  td,th
+    border-bottom: solid 1px $grey20
+    padding: $base
+    text-shadow: 0 1px 0 #fff
+
+thead
+  th,td
+    background: #fff
+    color: $grey80
+    font-size: $base--font-size - 1
+    font-style: italic
+    font-weight: normal
+    padding: $base $base*2
+    
+
+tbody
+  tr:nth-child(even)
+    background: $grey5
+
+// #other
+
+abbr
+  border-bottom: dashed 1px
+  cursor: help
+
+small
+  color: $grey30
+
+sup,sub
+  font-size: $base--font-size/1.5
+  position: relative
+
+sup
+  top: -$base
+
+sub
+  top: 3px
+
+q
+  font-style: italic
+
+blockquote
+  color: $grey80
+  font-family: $serif
+  font-style: italic
+  font-size: $base--font-size*1.5
+  line-height: $base--line-height*1.5
+  padding: $base*2
+  margin-bottom: $base--line-height*1.5
+  text-align: center
+
+  cite
+    display: block
+    font-family: $serifcaps
+    font-size: $base--font-size
+    font-style: normal
+    text-transform: lowercase
+
+pre
+  background: #fff
+  box-shadow: 0 1px 3px rgba(0,0,0,.15)
+  margin-bottom: $base--line-height
+  overflow: auto
+  padding: $base--line-height
+  width: 100%
+
+address
+  margin-bottom: $base--line-height
+
+/*===========================================
+ #Forms
+ * ==========================================*/
+
+// #fields
+.control-group
+  display: block
+  padding-bottom: $base*4
+  label,
+  .label
+    display: block
+    padding: 0 0 $base--line-height/2 0
+
+.control-group--checkbox,
+.control-group--radio
+  label
+    @include transition(background .15s)
+    margin-bottom: $base--line-height/4    
+    position: relative
+    padding-left: $base*4
+
+    &:hover,
+    &:focus
+      background: $grey5
+      cursor: pointer
+      color: $black
+    &:active
+      background: $grey10
+      color: $black
+      top: 1px
+  
+  input[type=checkbox],
+  input[type=radio]
+    left: 0
+    position: absolute
+    top: 2px
+
+label
+  display: block
+
+textarea,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"]
+  -webkit-appearance: none
+  background: none
+  border: none
+  border-radius: 0px
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 1px 0 #fff
+  background-color: #fff
+  border: solid 1px $grey20
+  color: $grey100
+  display: block
+  margin: 0
+  padding: $base
+  text-align: left
+  font: normal normal 16px/16px $sans-serif
+  height: auto
+  position: relative
+  vertical-align: top
+  width: 100%
+
+textarea
+  height: 150px
+
+select
+  width: 100%
+
+
+/*============================================
+ #Grids
+ * ==========================================*/
+
+
+
+%grid
+  background: #f6f6f6
+  display: block
+  float: left
+
+
+.row
+  @extend .cf
+  display: block
+  width: 100%
+
+@for $i from 1 through 12
+  $iminus: $i/12
+  .col#{$i}
+    @extend %grid
+    width: 100%*$iminus

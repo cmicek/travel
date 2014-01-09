@@ -1,0 +1,447 @@
+/*============================================
+ * Modules
+ * Project:
+ *
+ *--Table of Contents--
+ *  #Readme
+ *--#Site Elements
+ *--#Posts
+ *
+ * ==========================================*/
+
+/*============================================
+ #Readme
+ *
+ * This file hold the sections of the site that deal with the business logic. Sidebars, headers, navigation, etc.
+ * Modules are made up of components which are built using the framework.
+ * ==========================================*/
+
+/*============================================
+  #Site Elements
+  * ========================================*/
+
+body
+  overflow-x: hidden
+
+.container  
+  padding: 0 $base*2
+
+  @include breakpoint($breakpoint--medium)
+    padding: 0 $base*3
+
+.site-nav--title
+  @extend %nav-font
+  display: inline-block
+  padding: $base*2 0
+
+  @include breakpoint($breakpoint--medium)
+    font-size: $base--font-size+1
+    padding: $base*3 0
+
+  
+
+
+/*============================================
+  #Main Nav
+  * ========================================*/
+
+
+
+
+%nav-font
+  border-bottom: none
+  color: #fff
+  line-height: $base--font-size
+  letter-spacing: 3px
+  text-transform: uppercase
+  &:hover,
+  &:focus
+    color: darken(#fff, 20%)
+    border: none
+    
+
+.site-nav
+  @extend %nav-font
+  background: transparentize($grey100, .1)
+  box-shadow: inset -1px 0 4px rgba(0,0,0,.5)
+  left: 0
+  height: 100%
+  top: 0
+  overflow: auto
+  position: fixed
+  padding-left: 15%
+  padding-top: 8px
+  width: 100%
+  z-index: 1
+
+  
+  @include breakpoint($breakpoint--medium)
+    background: none
+    height: auto
+    padding: 16px 8px 0 0
+    position: absolute
+    right: 0
+    top: 0
+    z-index: 3
+
+    .admin-bar & 
+      padding-top: 44px
+
+
+.site-nav--list
+  list-style: none
+
+  @include breakpoint($breakpoint--medium)
+    float: right
+
+    width: auto
+
+  li
+    list-style: none
+    margin: 0
+    padding: 0
+  a
+    @extend %nav-font
+    color: rgba(255,255,255,.75)
+    display: block
+    padding: $base $base*2
+
+    &:hover,
+    &:focus
+      color: #fff
+
+  .menu-item
+    padding-right: 40px
+    position: relative
+
+    @include breakpoint($breakpoint--medium)
+      float: left
+      padding-right: 0
+
+
+  .menu-item-toggle
+    @include transition(color .25s)
+    content: "+"
+    cursor: pointer
+    display: block
+    font-size: 24px
+    line-height: 32px
+    height: 100%
+    position: absolute
+    right: 0
+    text-align: center
+    top: 0
+    width: 40px
+
+    &:hover,
+    &:focus
+      color: #fff
+    &:active
+      top: 1px
+
+    @include breakpoint($breakpoint--medium)
+      display: none
+
+  
+.sub-menu
+  display: none
+  padding-left: 16px
+
+.menu-item__active > .sub-menu
+  display: block
+
+@include breakpoint($breakpoint--medium)
+  .site-nav--list
+    .menu-item-has-children a
+      display: inline-block
+      position: relative
+      padding-right: 25px
+      &:after
+        @include transform(rotate(45deg))
+        @include transition(border .25s)
+        border: solid 2px rgba(255,255,255,.75)
+        border-top: none
+        border-left: none
+        content: ""
+        display: block
+        height: 6px
+        margin-top: -4px
+        position: absolute
+        right: 7px
+        top: 50%
+        width: 6px
+    .menu-item-has-children a:hover
+      &:after
+        border-color: #fff
+    .menu-item
+      .sub-menu
+        display: block
+        position: absolute
+
+/*============================================
+  #Site Header
+  * ========================================*/
+
+
+.site-header
+
+  background: $blue
+  float: left
+  position: relative
+  width: 100%
+  z-index: 2
+  
+  img
+    float: left
+    height: auto
+    width: 100%
+
+.site-header--title
+  position: relative
+  
+
+.site-nav--toggle
+  @include transition(opacity .25s)
+  background: url(assets/images/icon-hamburger.png) center center no-repeat
+  background-size: 24px auto
+  cursor: pointer
+  display: block
+  full: #fff
+  height: 100%
+  opacity: 1
+  overflow: hidden
+  position: absolute
+  right: 0
+  text-indent: -9999px
+  top: 0
+  width: 40px
+  
+  &:hover,
+  &:focus
+    opacity: .6
+
+  &:active
+    opacity: .4
+    top: 1px
+
+
+  @include breakpoint($breakpoint--medium)
+    display: none
+
+.site-content
+  @extend .cf
+  background: $grey5
+  float: left
+  position: relative
+  width: 100%
+  z-index: 2
+
+.site-header,
+.site-content
+  @include transform-transition
+
+.site-nav__active
+  height: 100%
+  overflow: hidden
+  .site-header,
+  .site-content
+    @include transform(translateX(-85%))
+
+/*============================================
+  #Posts
+  * ========================================*/
+
+.post
+  @extend .cf
+  // border-bottom: solid 1px $grey15
+  // box-shadow: 0 1px 0 #fff
+  float: none
+  // max-width: 740px
+  // margin-left: auto
+  // margin-right: auto
+  padding: $base*2
+  width: 100%
+
+  @include breakpoint($breakpoint--small)
+    padding: $base*3
+
+  @include breakpoint($breakpoint--medium)
+    padding: $base*5 0 $base*5 0
+
+  @include breakpoint($breakpoint--large)
+    padding: $base*7 0 $base*7 0
+
+  .post--content
+    @extend .cf
+
+    div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,table,address,pre,code
+      max-width: 740px
+      margin-left: auto
+      margin-right: auto
+
+      *
+        max-width: 100%
+
+    blockquote
+      max-width: 900px
+      margin-left: auto
+      margin-right: auto
+
+      p
+        max-width: 100%
+
+    
+    .wp-caption
+      display: block
+      padding-left: $base*5
+      padding-right: $base*5
+      margin-left: auto
+      margin-right: auto
+      max-width: 100%
+      text-align: center
+  p
+    display: block
+
+
+.post.sticky
+  background: #fff
+  box-shadow: 0 1px 2px rgba(0,0,0,.15)
+  margin: $base*2 auto 0 auto
+  max-width: 800px
+
+  @include breakpoint($breakpoint--small)
+    margin-top: $base*3
+    margin-bottom: $base*3
+
+  @include breakpoint($breakpoint--medium)
+    margin-top: $base*5
+    margin-bottom: $base*5
+
+  @include breakpoint($breakpoint--large)
+    margin-top: $base*7
+    margin-bottom: $base*7
+
+
+.post--header
+  margin-bottom: $base*2
+  margin-left: auto
+  margin-right: auto
+  max-width: 750px
+
+  @include breakpoint($breakpoint--medium)
+    margin-bottom: $base*3
+  
+  @include breakpoint($breakpoint--large)
+    margin-bottom: $base*4
+
+.post--title
+  margin-bottom: $base*2
+  text-align: center
+  a
+    border-bottom: none
+
+    &:hover,
+    &:focus
+      color: $grey60
+      border-bottom: none
+
+.post--meta
+  color: $grey60
+  display: block
+  font-style: italic
+  font-size: $base--font-size + 1
+  font-family: $serif
+  line-height: 20px
+  margin: 0
+  padding: 0
+  text-align: center
+
+.post--meta--item
+  display: inline-block
+  list-style: none
+  margin: 0
+  padding: 0
+
+  &:before
+    content: "•"
+    display: inline-block
+    margin: 0 $base + 2   0 $base  
+    position: relative
+
+  &:first-child:before
+    display: none
+
+.post--meta--link
+  border-bottom: solid 1px $transparent
+  color: $grey60
+  
+  &:hover,
+  &:focus
+    border-bottom: solid 1px
+    color: $grey100
+  
+
+
+.post--tags,
+.post--comments  
+  border-top: dashed 1px $grey20
+  box-shadow:  inset 0 1px 0 rgba(255,255,255,.5)
+  color: $grey60
+  font-style: italic
+  font-family: $serif
+  line-height: 20px
+  margin-left: auto
+  margin-right: auto
+  margin-top: $base*2
+  max-width: 740px
+  position: relative
+  padding: $base*2 0 0 $base*4
+
+ 
+
+  &:before
+    background: url(assets/images/icon-tag.png) center center no-repeat
+    background-size: contain
+    content: ""
+    display: block
+    float: left
+    height: 18px
+    left: 0
+    opacity: .5
+    position: absolute
+    top: 1px + $base*2
+    width: 18px
+      
+
+  a
+    border-bottom: solid 1px $transparent
+    color: $grey60
+    display: inline-block
+    margin-right: $base/2
+
+    &:hover,
+    &:focus
+      border-bottom: solid 1px
+      color: $grey100
+
+    &:after
+      content: ","
+      margin-left: 1px
+
+    &:last-child:after,
+    &.post--comments--count:after
+      display: none
+
+
+
+.post--comments
+  &:before
+    background-image: url(assets/images/icon-comment.png)
+
+.comment--form
+  border-top: dashed 1px $grey20
+  box-shadow:  inset 0 1px 0 rgba(255,255,255,.5)
+  margin: $base*2 auto 0 auto
+  padding-top: $base*2
+  max-width: 740px
+  
