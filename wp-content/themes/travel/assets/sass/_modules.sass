@@ -6,6 +6,7 @@
  *  #Readme
  *--#Site Elements
  *--#Posts
+ *--#Gallery
  *
  * ==========================================*/
 
@@ -22,6 +23,10 @@
 
 body
   overflow-x: hidden
+  padding-bottom: 80px
+
+  &#tinymce
+    padding: 20px
 
 .container  
   padding: 0 $base*2
@@ -29,7 +34,8 @@ body
   @include breakpoint($breakpoint--medium)
     padding: 0 $base*3
 
-.site-nav--title
+.site-nav--title,
+.site-header--title
   @extend %nav-font
   display: inline-block
   padding: $base*2 0
@@ -38,7 +44,8 @@ body
     font-size: $base--font-size+1
     padding: $base*3 0
 
-  
+.site-header--link
+  @extend %nav-font
 
 
 /*============================================
@@ -51,7 +58,7 @@ body
 %nav-font
   border-bottom: none
   color: #fff
-  line-height: $base--font-size
+  line-height: $base--font-size - 1
   letter-spacing: 3px
   text-transform: uppercase
   &:hover,
@@ -79,7 +86,7 @@ body
     background: none
     box-shadow: none
     height: auto
-    padding: 16px 8px 0 0
+    // padding: 16px 8px 0 0
     overflow: hidden
     position: absolute
     right: 0
@@ -89,14 +96,31 @@ body
     .admin-bar & 
       padding-top: 44px
 
+.site-nav--title
+  display: none
+  left: 0
+  padding: $base*2
+  position: absolute
+  top: 0
+  
+  .admin-bar & 
+    top: 28px
+
+  @include breakpoint($breakpoint--medium)
+    display: block
+  
 
 .site-nav--list
   list-style: none
 
   @include breakpoint($breakpoint--medium)
     float: right
-
     width: auto
+
+  ul
+    @include breakpoint($breakpoint--medium)
+      float: right
+      width: auto
 
   li
     list-style: none
@@ -112,14 +136,17 @@ body
     &:focus
       color: #fff
 
-  .menu-item
+  .menu-item,
+  .page_item
     padding-right: 40px
     position: relative
 
     @include breakpoint($breakpoint--medium)
       float: left
       padding-right: 0
-
+  
+  .current-menu-item a
+    color: #fff
 
   .menu-item-toggle
     @include transition(color .25s)
@@ -199,7 +226,12 @@ body
     width: 100%
 
 .site-header--title
+  padding: $base*2
   position: relative
+  width: 100%
+
+  @include breakpoint($breakpoint--medium)
+    opacity: 0
 
 .site-header--background
   @include transition(height .25s)
@@ -236,7 +268,7 @@ body
   opacity: 1
   overflow: hidden
   position: absolute
-  right: 0
+  right: $base
   text-indent: -9999px
   top: 0
   width: 40px
@@ -277,7 +309,8 @@ body
   * ========================================*/
 
 article.post,
-article.page
+article.page,
+article.attachment
   @extend .cf
   // border-bottom: solid 1px $grey15
   // box-shadow: 0 1px 0 #fff
@@ -314,35 +347,61 @@ article.page
       margin-right: auto
 
       p
+        display: block    
         max-width: 100%
+  div.gallery
+    max-width: 100%
+    .gallery--large--item
+      @include transition(max-height .25s, opacity .25s)
+      max-height: 300px
 
-    
-    .wp-caption
-      background: #fff
-      box-shadow: 0 1px 5px -1px rgba(0,0,0,.15)
-      display: block
-      // padding-left: $base*5
-      // padding-right: $base*5
-      overflow: hidden
-      margin-bottom: $base--line-height
-      margin-left: auto
-      margin-right: auto
-      max-width: 100%
-      text-align: center
+      @media (min-height: 400px)
+        max-height: 350px
+      @media (min-height: 500px)
+        max-height: 450px
+      @media (min-height: 600px)
+        max-height: 550px
+      @media (min-height: 700px)
+        max-height: 650px
+      @media (min-height: 800px)
+        max-height: 750px
+      @media (min-height: 900px)
+        max-height: 850px
+      @media (min-height: 1000px)
+        max-height: 950px
+  
+  div.gallery--nav
+    overflow: hidden
+    margin-left: auto
+    margin-right: auto
+    max-width: 740px
 
-      img
-        float: left
-        width: 100%
-
-    .wp-caption-text
-      display: block
-      font-family: $serif
-      float: left
-      padding: $base*2 0 $base*2
-      width: 100%
-  p
+  div.wp-caption
+    background: #fff
+    box-shadow: 0 1px 5px -1px rgba(0,0,0,.15)
     display: block
+    // padding-left: $base*5
+    // padding-right: $base*5
+    overflow: hidden
+    margin-bottom: $base--line-height
+    margin-left: auto
+    margin-right: auto
+    max-width: 100%
+    // text-align: center
 
+    img
+      float: left
+      width: 100%
+
+  .wp-caption-text
+    display: block
+    font-family: $serif
+    float: left
+    padding: $base*2
+    width: 100%
+
+    br
+      line-height: $base--line-height*2
 
 
 .post.sticky
@@ -480,10 +539,182 @@ article.page
   &:before
     background-image: url(assets/images/icon-comment.png)
 
-.comment--form
+.commentlist
+  margin-bottom: $base--line-height
+
+.comment--form,
+.comment--list
   border-top: dashed 1px $grey20
   box-shadow:  inset 0 1px 0 rgba(255,255,255,.5)
+  display: none
   margin: $base*2 auto 0 auto
   padding-top: $base*2
   max-width: 740px
   
+  &.in
+    display: block
+
+.comment--form
+  label
+    display: block
+    margin-bottom: $base
+  .comment-form-url
+    display: none
+  br
+    display: none
+  
+
+.comment--list
+  list-style: none
+  #respond
+    display: none
+
+.comment
+  background: #fff
+  box-shadow: 0 1px 2px rgba(0,0,0,.15)
+  list-style: none
+  margin: 0 0 $base 0 
+  position: relative
+  padding: $base*2 $base*2  $base*2  $base*8
+
+.comment .avatar
+  bottom: auto
+  height: auto
+  left: $base*2
+  max-width: $base*4
+  position: absolute
+  top: $base*2
+  width: auto
+
+.comment-metadata
+  font-family: $serif
+  font-style: italic
+  position: absolute
+  right: $base*2
+  top: $base*2
+  
+  a
+    color: $grey50
+    border-bottom: solid 1px $transparent
+
+    &:hover,
+    &:focus
+      border-bottom: solid 1px
+      color: $grey100
+.comment-content
+  display: block
+  padding: $base*2 0
+// #respond
+//   display: none
+//   &.in
+//     display: block
+
+
+/*=====================================left: ====
+  #Gallery
+  * ========================================*/
+.post--content
+  .gallery
+    overflow: hidden
+
+    br
+      display: none
+
+  .gallery-item 
+    cursor: pointer
+    float: left
+    margin: 0
+    padding: 0
+    overflow: hidden
+    position: relative
+    width: 10%      
+    
+    &:after
+      @include transition(background .25s)  
+      background: rgba(255,255,255,0)
+      content: ""
+      display: block
+      height: 100%
+      left: 0
+      position: absolute
+      top: 0
+      width: 100%
+      z-index: 1
+
+    &:hover:after,
+    &:focus:after,
+    &.active:after
+      background: rgba(255,255,255,.4)
+
+    &:active:after
+      background: rgba(255,255,255,.2)
+
+
+
+    a
+      border: none
+      float: left
+      overflow: hidden
+
+      &:hover,
+      &:focus
+        border: none
+
+      &:active
+        top: 0
+      
+    img
+      float: left
+      
+
+    .wp-caption-text
+      display: none
+
+
+  .gallery--large
+    position: relative
+    text-align: center
+    
+    .img
+      display: inline-block
+      overflow: hidden
+      position: relative
+
+      figcaption
+        @include transition(opacity .25s)
+        background: rgba(0,0,0,.8)
+        color:  $grey10
+        bottom: 6px
+        display: none
+        float: left
+        font-family: $serif
+        font-size: 14px
+        font-style: italic
+        line-height: 18px
+        left: 0
+        height: auto
+        max-height: 30%
+        overflow: auto
+        opacity: 1
+        position: absolute
+        padding: $base*2
+        text-align: left
+        width: 100%
+      
+      figcaption.in
+        display: block
+      
+
+    img
+      display: inline-block
+      cursor: pointer
+      float: none
+      height: auto
+      opacity: 1
+      width: auto
+
+  .gallery--large.loading
+    img,figcaption
+      opacity: 0
+
+

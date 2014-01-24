@@ -48,7 +48,7 @@ p
 
 // #headings
 %heading
-  color: $black
+  color: $grey100
   text-shadow: 0 1px 0 rgba(255,255,255,.75)
   &:first-child
     margin-top: 0
@@ -305,6 +305,20 @@ textarea
 select
   width: 100%
 
+
+input[type=submit],
+button
+  background: lighten($blue, 10%)
+  color: #fff
+  cursor: pointer
+  font-size: $base--font-size - 2
+  font-family: $serifcaps
+  border: solid 1px $blue
+  display: inline-block
+  letter-spacing: 1px
+  text-transform: uppercase
+  text-shadow: 0 1px 1px rgba(0,0,0,.25)
+  padding: $base
 
 /*============================================
  #Grids
